@@ -1,0 +1,93 @@
+---
+layout: default
+---
+
+<article class="retro-page">
+  <header class="retro-header">
+    <h1>{{ page.title }}</h1>
+    <p class="retro-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d/%m/%Y" }}</time>
+      • Author: {{ page.author }}
+    </p>
+  </header>
+
+  <div class="retro-columns">
+    <div class="retro-column">
+      <h2>Good</h2>
+      {% if page.good and page.good.size > 0 %}
+        <ul>
+        {% for item in page.good %}
+          <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+      {% else %}
+        <p>No items.</p>
+      {% endif %}
+    </div>
+
+    <div class="retro-column">
+      <h2>Change</h2>
+      {% if page.change and page.change.size > 0 %}
+        <ul>
+        {% for item in page.change %}
+          <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+      {% else %}
+        <p>No items.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if content and content != empty %}
+  <div class="retro-notes">
+    <hr>
+    <h2>Notes</h2>
+    {{ content }}
+  </div>
+  {% endif %}
+</article>
+
+<style>
+.retro-columns {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.retro-column {
+  flex: 1;
+}
+
+.retro-column h2 {
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.retro-header {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.retro-meta {
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+.retro-notes {
+  margin-top: 2rem;
+}
+
+.retro-notes hr {
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .retro-columns {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+</style>

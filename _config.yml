@@ -1,0 +1,25 @@
+title: "Retro Notes"
+description: "Retrospective notes and learnings"
+baseurl: ""
+url: "https://kurtpeniket.github.io"
+
+collections:
+  retros:
+    output: true
+    permalink: /retros/:name/
+
+defaults:
+  - scope:
+      path: "_retros"
+      type: "retros"
+    values:
+      layout: "retro"
+
+theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+markdown: kramdown
+highlighter: rouge
